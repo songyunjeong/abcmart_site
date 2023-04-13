@@ -1,6 +1,11 @@
+.logo-img {
+  display: block;
+  padding: 20px;
+  margin-left: 180px;
+}
+
 .main-bg {
-  height: 300px;
-  background-image: url(https://codingapple1.github.io/shop/shoes3.jpg);
+  height: 410px;
   background-size: cover;
   background-position: center;
 }
