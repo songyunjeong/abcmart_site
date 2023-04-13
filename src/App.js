@@ -38,22 +38,26 @@ function App() {
       <Container>
         <Row>
           {shoes.map((data, i) => {
-            return (
-              <Col sm>
-                <img
-                  src={`https://codingapple1.github.io/shop/shoes${i + 1}.jpg`}
-                  alt='배경 이미지'
-                  width='80%'
-                />
-                <h4>{shoes[i].title}</h4>
-                <p>{shoes[i].content}</p>
-                <p>{shoes[i].price.toLocaleString()}</p>
-              </Col>
-            );
+            return <Card key={i} shoes={shoes[i]} i={i} />;
           })}
         </Row>
       </Container>
     </div>
+  );
+}
+
+function Card({ shoes, i }) {
+  return (
+    <Col sm>
+      <img
+        src={`https://codingapple1.github.io/shop/shoes${i + 1}.jpg`}
+        alt='배경 이미지'
+        width='80%'
+      />
+      <h4>{shoes.title}</h4>
+      <p>{shoes.content}</p>
+      <p>{shoes.price.toLocaleString()}</p>
+    </Col>
   );
 }
 
