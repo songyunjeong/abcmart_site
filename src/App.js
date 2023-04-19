@@ -1,69 +1,71 @@
-import { useState } from 'react';
-import { Col, Container, Nav, Navbar, Row } from 'react-bootstrap';
-import './App.css';
-import data from './data';
-import { Routes, Route, Link, useNavigate, Outlet } from 'react-router-dom';
-import Detail from './pages/Detail';
-import Event from './pages/Event';
+import { useState } from "react";
+import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
+import "./App.css";
+import data from "./data";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import Detail from "./pages/Detail";
+import Event from "./pages/Event";
+import axios from "axios";
 
 function App() {
-  let [shoes] = useState(data);
+  let [shoes, setShoes] = useState(data);
+
   let navigate = useNavigate();
 
   return (
     <div className='App'>
       <Link to='/'>
         <img
-          src={process.env.PUBLIC_URL + '/imgs/logo.png'}
+          src={process.env.PUBLIC_URL + "/imgs/logo.png"}
           alt='로고 이미지'
           className='logo-img'
         />
       </Link>
 
       <Navbar
-        style={{ backgroundColor: '#ee1c25', fontWeight: 'bold' }}
+        style={{ backgroundColor: "#ee1c25", fontWeight: "bold" }}
         variant='dark'
       >
         <Container>
           <Nav className='me-auto'>
             <Nav.Link
               onClick={() => {
-                navigate('/brand');
+                navigate("/brand");
               }}
             >
               BRAND
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate('/men');
+                navigate("/men");
               }}
             >
               MEN
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate('/women');
+                navigate("/women");
               }}
             >
               WOMEN
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate('/kids');
+                navigate("/kids");
               }}
             >
               KIDS
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate('/sale');
+                navigate("/sale");
               }}
             >
               SALE
             </Nav.Link>
             <Nav.Link
               onClick={() => {
-                navigate('/event');
+                navigate("/event");
               }}
             >
               EVENT
@@ -79,7 +81,7 @@ function App() {
             <>
               <img
                 className='main-bg'
-                src={process.env.PUBLIC_URL + '/imgs/bg.jpg'}
+                src={process.env.PUBLIC_URL + "/imgs/bg.jpg"}
                 alt='배경 이미지'
               ></img>
 
@@ -96,6 +98,20 @@ function App() {
                     );
                   })}
                 </Row>
+                <button
+                  onClick={() => {
+                    axios
+                      .get("https://codingapple1.github.io/shop/data2.json")
+                      .then((result) => {
+                        console.log(result.data);
+                      })
+                      .catch(() => {
+                        console.log("error");
+                      });
+                  }}
+                >
+                  더보기
+                </button>
               </Container>
             </>
           }

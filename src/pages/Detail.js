@@ -1,26 +1,32 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
 
 const Detail = ({ shoes }) => {
   let { id } = useParams();
   let [eventBanner, setEventBanner] = useState(true);
-  let [input, setInput] = useState('');
+  let [inputNum, setInputNum] = useState("");
   let [alert, setAlert] = useState(false);
 
   useEffect(() => {
-    let timeEvent = setTimeout(() => {
+    let timeEventTimer = setTimeout(() => {
       setEventBanner(false);
     }, 2000);
     return () => {
-      clearTimeout(timeEvent);
+      clearTimeout(timeEventTimer);
     };
   });
 
+  useEffect(() => {
+    if (isNaN(inputNum)) {
+      setAlert(true);
+    }
+  }, [inputNum]);
+
   return (
     <div className='container'>
-      {eventBanner ? (
+      {eventBanner && (
         <div className='alert alert-warning'>2초 이내 구매 시 할인</div>
-      ) : null}
+      )}
       <div className='row'>
         <div className='col-md-6'>
           <img src={shoes[id].img} width='100%' alt='제품 이미지' />
@@ -31,10 +37,10 @@ const Detail = ({ shoes }) => {
           <input
             type='text'
             onChange={(e) => {
-              setInput(e.target.value);
+              setInputNum(e.target.value);
             }}
           />
-          {alert ? <p style={{ color: 'red' }}>숫자만 입력해주세요.</p> : null}
+          {alert && <p style={{ color: "red" }}>숫자만 입력해주세요.</p>}
           <p>{shoes[id].price.toLocaleString()}원</p>
           <button className='btn btn-danger'>주문하기</button>
         </div>
