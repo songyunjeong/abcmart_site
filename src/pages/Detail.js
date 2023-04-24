@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
+import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Context } from "./../App.js";
 
@@ -25,8 +26,6 @@ const Detail = ({ shoes }) => {
       setAlert(true);
     }
   }, [inputNum]);
-
-  useEffect(() => {});
 
   return (
     <div className='container'>
