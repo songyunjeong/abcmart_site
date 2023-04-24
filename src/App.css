@@ -8,6 +8,15 @@
   background-position: center;
 }
 
+.nav {
+  --bs-nav-link-color: "black";
+  --bs-nav-link-hover-color: "black";
+}
+
+.alert {
+  --bs-alert-border-radius: 0;
+}
+
 .App {
   text-align: center;
 }

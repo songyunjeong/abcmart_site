@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import "./App.css";
 import data from "./data";
@@ -6,9 +6,16 @@ import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Detail from "./pages/Detail";
 import Event from "./pages/Event";
 import axios from "axios";
+import Loading from "./components/Loading";
+import Cart from "./pages/Cart";
+
+export let Context = createContext();
 
 function App() {
   let [shoes, setShoes] = useState(data);
+  let [loding, setLoding] = useState(false);
+  let [clickCount, setClickCount] = useState(0);
+  let [stock, setStock] = useState([10, 11, 12]);
 
   let navigate = useNavigate();
 
@@ -28,13 +35,7 @@ function App() {
       >
         <Container>
           <Nav className='me-auto'>
-            <Nav.Link
-              onClick={() => {
-                navigate("/brand");
-              }}
-            >
-              BRAND
-            </Nav.Link>
+            <Nav.Link style={{ color: "#ffe100" }}>BRAND</Nav.Link>
             <Nav.Link
               onClick={() => {
                 navigate("/men");
@@ -83,6 +84,12 @@ function App() {
                 className='main-bg'
                 src={process.env.PUBLIC_URL + "/imgs/bg.jpg"}
                 alt='배경 이미지'
+                style={{
+                  width: "100%",
+                  height: "auto",
+                  maxWidth: "1320px",
+                  marginBottom: "30px",
+                }}
               ></img>
 
               <Container>
@@ -98,25 +105,42 @@ function App() {
                     );
                   })}
                 </Row>
-                <button
-                  onClick={() => {
-                    axios
-                      .get("https://codingapple1.github.io/shop/data2.json")
-                      .then((result) => {
-                        console.log(result.data);
-                      })
-                      .catch(() => {
-                        console.log("error");
-                      });
-                  }}
-                >
-                  더보기
-                </button>
+                {loding && <Loading />}
+                {clickCount === 2 ? (
+                  <div style={{ padding: "30px" }}>더이상 상품이 없습니다.</div>
+                ) : (
+                  <button
+                    onClick={() => {
+                      setClickCount(clickCount + 1);
+                      setLoding(true);
+                      axios
+                        .get("https://codingapple1.github.io/shop/data2.json")
+                        .then((result) => {
+                          let copy = [...shoes, ...result.data];
+                          if (clickCount < 1) {
+                            setShoes(copy);
+                          }
+                          setLoding(false);
+                        })
+                        .catch(() => {
+                          setLoding(false);
+                          console.log("error");
+                        });
+                    }}
+                    style={{
+                      border: "none",
+                      fontSize: "14px",
+                      padding: "5px 10px",
+                      margin: "20px",
+                    }}
+                  >
+                    MORE
+                  </button>
+                )}
               </Container>
             </>
           }
         />
-        <Route path='/brand' element={<div>브랜드 페이지</div>} />
         <Route path='/men' element={<div>MEN 페이지</div>} />
         <Route path='/women' element={<div>WOMEN 페이지</div>} />
         <Route path='/kids' element={<div>KIDS 페이지</div>} />
@@ -125,7 +149,15 @@ function App() {
           <Route path='one' element={<div>첫 주문시 양배추즙 서비스</div>} />
           <Route path='two' element={<div>생일기념 쿠폰받기</div>} />
         </Route>
-        <Route path='/detail/:id' element={<Detail shoes={shoes} />} />
+        <Route
+          path='/detail/:id'
+          element={
+            <Context.Provider value={{ stock }}>
+              <Detail shoes={shoes} />
+            </Context.Provider>
+          }
+        />
+        <Route path='/cart' element={<Cart>장바구니</Cart>} />
         <Route path='*' element={<div>없는 페이지</div>} />
       </Routes>
     </div>
@@ -139,6 +171,7 @@ function Card({ navigate, shoes, i }) {
       onClick={() => {
         navigate(`/detail/${shoes.id}`);
       }}
+      style={{ minWidth: "33%", cursor: "pointer" }}
     >
       <img
         src={`https://codingapple1.github.io/shop/shoes${i + 1}.jpg`}
