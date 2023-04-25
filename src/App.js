@@ -21,59 +21,63 @@ function App() {
 
   return (
     <div className='App'>
-      <Link to='/'>
-        <img
-          src={process.env.PUBLIC_URL + "/imgs/logo.png"}
-          alt='로고 이미지'
-          className='logo-img'
-        />
-      </Link>
+      <header>
+        <Link to='/'>
+          <img
+            src={process.env.PUBLIC_URL + "/imgs/logo.png"}
+            alt='로고 이미지'
+            className='logo-img'
+          />
+        </Link>
 
-      <Navbar
-        style={{ backgroundColor: "#ee1c25", fontWeight: "bold" }}
-        variant='dark'
-      >
-        <Container>
-          <Nav className='me-auto'>
-            <Nav.Link style={{ color: "#ffe100" }}>BRAND</Nav.Link>
-            <Nav.Link
-              onClick={() => {
-                navigate("/men");
-              }}
-            >
-              MEN
-            </Nav.Link>
-            <Nav.Link
-              onClick={() => {
-                navigate("/women");
-              }}
-            >
-              WOMEN
-            </Nav.Link>
-            <Nav.Link
-              onClick={() => {
-                navigate("/kids");
-              }}
-            >
-              KIDS
-            </Nav.Link>
-            <Nav.Link
-              onClick={() => {
-                navigate("/sale");
-              }}
-            >
-              SALE
-            </Nav.Link>
-            <Nav.Link
-              onClick={() => {
-                navigate("/event");
-              }}
-            >
-              EVENT
-            </Nav.Link>
-          </Nav>
-        </Container>
-      </Navbar>
+        <Link to='/cart' className='gnb-cart'></Link>
+
+        <Navbar
+          style={{ backgroundColor: "#ee1c25", fontWeight: "bold" }}
+          variant='dark'
+        >
+          <Container>
+            <Nav className='me-auto'>
+              <Nav.Link style={{ color: "#ffe100" }}>BRAND</Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  navigate("/men");
+                }}
+              >
+                MEN
+              </Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  navigate("/women");
+                }}
+              >
+                WOMEN
+              </Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  navigate("/kids");
+                }}
+              >
+                KIDS
+              </Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  navigate("/sale");
+                }}
+              >
+                SALE
+              </Nav.Link>
+              <Nav.Link
+                onClick={() => {
+                  navigate("/event");
+                }}
+              >
+                EVENT
+              </Nav.Link>
+            </Nav>
+          </Container>
+        </Navbar>
+      </header>
 
       <Routes>
         <Route

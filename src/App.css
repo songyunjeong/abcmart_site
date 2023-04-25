@@ -1,16 +1,31 @@
+header {
+  position: relative;
+}
+
 .logo-img {
   padding: 20px;
+}
+
+.gnb-cart {
+  display: block;
+  position: absolute;
+  top: 30px;
+  right: 100px;
+  width: 25px;
+  height: 31px;
+  background: url("./../public/imgs/comm_header_util_link_abc_mart.png");
+  background-position-x: -63px;
+}
+
+.nav {
+  --bs-nav-link-color: "black";
+  --bs-nav-link-hover-color: "black";
 }
 
 .main-bg {
   height: 410px;
   background-size: cover;
   background-position: center;
-}
-
-.nav {
-  --bs-nav-link-color: "black";
-  --bs-nav-link-hover-color: "black";
 }
 
 .alert {

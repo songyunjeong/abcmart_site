@@ -1,14 +1,25 @@
 import React from "react";
 import { Container, Table } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { modifyName } from "./../store/userSlice";
+import { increaseCount } from "./../store/cartSlice";
 
 const Cart = () => {
   let user = useSelector((state) => state.user);
-  let cartList = useSelector((state) => state.cartList);
+  let cart = useSelector((state) => state.cart);
+  let dispatch = useDispatch();
 
   return (
     <Container>
-      <h2 style={{ padding: "80px 0 50px" }}>{user}님의 장바구니</h2>
+      <h2 style={{ padding: "80px 0 20px" }}>{user.name} 님의 장바구니</h2>
+      <button
+        style={{ marginBottom: "50px" }}
+        onClick={() => {
+          dispatch(modifyName());
+        }}
+      >
+        영어이름으로 변경
+      </button>
       <Table>
         <thead style={{ backgroundColor: "#eee" }}>
           <tr>
@@ -19,18 +30,22 @@ const Cart = () => {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>1</td>
-            <td>{cartList[0].name}</td>
-            <td>{cartList[0].count}</td>
-            <td>안녕</td>
-          </tr>
-          <tr>
-            <td>2</td>
-            <td>{cartList[1].name}</td>
-            <td>{cartList[1].count}</td>
-            <td>안녕</td>
-          </tr>
+          {cart.map((id, i) => (
+            <tr key={i}>
+              <td>{i + 1}</td>
+              <td>{cart[i].name}</td>
+              <td>{cart[i].count}</td>
+              <td>
+                <button
+                  onClick={() => {
+                    dispatch(increaseCount(cart[i].id));
+                  }}
+                >
+                  +
+                </button>
+              </td>
+            </tr>
+          ))}
         </tbody>
       </Table>{" "}
     </Container>

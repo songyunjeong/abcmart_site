@@ -1,16 +1,20 @@
 import { useContext, useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
-import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import { Context } from "./../App.js";
+import { addItem } from "./../store/cartSlice";
 
 const Detail = ({ shoes }) => {
   let { stock } = useContext(Context);
   let { id } = useParams();
+
   let [eventBanner, setEventBanner] = useState(true);
   let [inputNum, setInputNum] = useState("");
   let [alert, setAlert] = useState(false);
   let [tab, setTab] = useState(0);
+
+  let dispatch = useDispatch();
 
   useEffect(() => {
     let timeEventTimer = setTimeout(() => {
@@ -51,7 +55,14 @@ const Detail = ({ shoes }) => {
           {alert && <p style={{ color: "#ee1c25" }}>숫자만 입력해주세요.</p>}
           <p>(재고 {stock[0]}개)</p>
           <p>{shoes[id].price.toLocaleString()}원</p>
-          <button className='btn btn-danger'>주문하기</button>
+          <button
+            className='btn btn-danger'
+            onClick={() =>
+              dispatch(addItem({ id: 1, name: "Red Knit", count: 1 }))
+            }
+          >
+            주문하기
+          </button>
         </div>
       </div>
 
