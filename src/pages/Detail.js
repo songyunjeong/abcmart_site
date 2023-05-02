@@ -8,13 +8,12 @@ import { addItem } from "./../store/cartSlice";
 const Detail = ({ shoes }) => {
   let { stock } = useContext(Context);
   let { id } = useParams();
+  let dispatch = useDispatch();
 
   let [eventBanner, setEventBanner] = useState(true);
   let [inputNum, setInputNum] = useState("");
   let [alert, setAlert] = useState(false);
   let [tab, setTab] = useState(0);
-
-  let dispatch = useDispatch();
 
   useEffect(() => {
     let timeEventTimer = setTimeout(() => {
@@ -58,7 +57,9 @@ const Detail = ({ shoes }) => {
           <button
             className='btn btn-danger'
             onClick={() =>
-              dispatch(addItem({ id: 1, name: "Red Knit", count: 1 }))
+              dispatch(
+                addItem({ id: shoes[id].id, name: shoes[id].title, count: 1 })
+              )
             }
           >
             주문하기
