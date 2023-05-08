@@ -20,7 +20,7 @@ let cart = createSlice({
     },
     addItem(state, action) {
       const i = state.findIndex((a) => {
-        return a.id === action.payload;
+        return a.id === action.payload.id;
       });
       if (i > -1) {
         state[i].count++;
@@ -29,10 +29,10 @@ let cart = createSlice({
       }
     },
     deleteItem(state, action) {
-      let id = state.findIndex((a) => {
-        return a.id === action.payload;
+      let i = state.findIndex((a) => {
+        return a.i === action.payload;
       });
-      state.splice(id, 1);
+      state.splice(i, 1);
     },
   },
 });

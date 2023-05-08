@@ -23,7 +23,7 @@ const Cart = () => {
       <Table>
         <thead style={{ backgroundColor: "#eee" }}>
           <tr>
-            <th></th>
+            <th>#</th>
             <th>상품명</th>
             <th>수량</th>
             <th>변경하기</th>

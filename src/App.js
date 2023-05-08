@@ -1,4 +1,4 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import "./App.css";
 import data from "./data";
@@ -12,6 +12,10 @@ import Cart from "./pages/Cart";
 export let Context = createContext();
 
 function App() {
+  useEffect(() => {
+    localStorage.setItem('watched', JSON.stringify([]))
+  }, [])
+
   let [shoes, setShoes] = useState(data);
   let [loding, setLoding] = useState(false);
   let [clickCount, setClickCount] = useState(0);
