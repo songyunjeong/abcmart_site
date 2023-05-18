@@ -13,8 +13,8 @@ export let Context = createContext();
 
 function App() {
   useEffect(() => {
-    localStorage.setItem('watched', JSON.stringify([]))
-  }, [])
+    localStorage.setItem("watched", JSON.stringify([]));
+  }, []);
 
   let [shoes, setShoes] = useState(data);
   let [loding, setLoding] = useState(false);
@@ -24,24 +24,24 @@ function App() {
   let navigate = useNavigate();
 
   return (
-    <div className='App'>
+    <div className="App">
       <header>
-        <Link to='/'>
+        <Link to="/">
           <img
             src={process.env.PUBLIC_URL + "/imgs/logo.png"}
-            alt='로고 이미지'
-            className='logo-img'
+            alt="로고 이미지"
+            className="logo-img"
           />
         </Link>
 
-        <Link to='/cart' className='gnb-cart'></Link>
+        <Link to="/cart" className="gnb-cart"></Link>
 
         <Navbar
           style={{ backgroundColor: "#ee1c25", fontWeight: "bold" }}
-          variant='dark'
+          variant="dark"
         >
           <Container>
-            <Nav className='me-auto'>
+            <Nav className="me-auto">
               <Nav.Link style={{ color: "#ffe100" }}>BRAND</Nav.Link>
               <Nav.Link
                 onClick={() => {
@@ -85,13 +85,13 @@ function App() {
 
       <Routes>
         <Route
-          path='/'
+          path="/"
           element={
             <>
               <img
-                className='main-bg'
+                className="main-bg"
                 src={process.env.PUBLIC_URL + "/imgs/bg.jpg"}
-                alt='배경 이미지'
+                alt="배경 이미지"
                 style={{
                   width: "100%",
                   height: "auto",
@@ -149,24 +149,24 @@ function App() {
             </>
           }
         />
-        <Route path='/men' element={<div>MEN 페이지</div>} />
-        <Route path='/women' element={<div>WOMEN 페이지</div>} />
-        <Route path='/kids' element={<div>KIDS 페이지</div>} />
-        <Route path='/sale' element={<div>SALE 페이지</div>} />
-        <Route path='/event' element={<Event />}>
-          <Route path='one' element={<div>첫 주문시 양배추즙 서비스</div>} />
-          <Route path='two' element={<div>생일기념 쿠폰받기</div>} />
+        <Route path="/men" element={<div>MEN 페이지</div>} />
+        <Route path="/women" element={<div>WOMEN 페이지</div>} />
+        <Route path="/kids" element={<div>KIDS 페이지</div>} />
+        <Route path="/sale" element={<div>SALE 페이지</div>} />
+        <Route path="/event" element={<Event />}>
+          <Route path="one" element={<div>첫 주문시 양배추즙 서비스</div>} />
+          <Route path="two" element={<div>생일기념 쿠폰받기</div>} />
         </Route>
         <Route
-          path='/detail/:id'
+          path="/detail/:id"
           element={
             <Context.Provider value={{ stock }}>
               <Detail shoes={shoes} />
             </Context.Provider>
           }
         />
-        <Route path='/cart' element={<Cart>장바구니</Cart>} />
-        <Route path='*' element={<div>없는 페이지</div>} />
+        <Route path="/cart" element={<Cart>장바구니</Cart>} />
+        <Route path="*" element={<div>없는 페이지</div>} />
       </Routes>
     </div>
   );
@@ -183,8 +183,8 @@ function Card({ navigate, shoes, i }) {
     >
       <img
         src={`https://codingapple1.github.io/shop/shoes${i + 1}.jpg`}
-        alt='배경 이미지'
-        width='80%'
+        alt="배경 이미지"
+        width="80%"
       />
       <h4>{shoes.title}</h4>
       <p>{shoes.content}</p>

@@ -30,20 +30,29 @@ const Detail = ({ shoes }) => {
     }
   }, [inputNum]);
 
+  useEffect(() => {
+    let watched = localStorage.getItem("watched");
+    watched = JSON.parse(watched);
+    watched.push(id);
+    watched = new Set(watched);
+    watched = Array.from(watched);
+    localStorage.setItem("watched", JSON.stringify(watched));
+  }, []);
+
   return (
-    <div className='container'>
+    <div className="container">
       {eventBanner && (
-        <div className='alert alert-warning'>5초 이내 구매 시 할인</div>
+        <div className="alert alert-warning">5초 이내 구매 시 할인</div>
       )}
-      <div className='row'>
-        <div className='col-md-6'>
-          <img src={shoes[id].img} width='100%' alt='제품 이미지' />
+      <div className="row">
+        <div className="col-md-6">
+          <img src={shoes[id].img} width="100%" alt="제품 이미지" />
         </div>
-        <div className='col-md-6'>
-          <h4 className='pt-5'>{shoes[id].title}</h4>
+        <div className="col-md-6">
+          <h4 className="pt-5">{shoes[id].title}</h4>
           <p>{shoes[id].content}</p>
           <input
-            type='text'
+            type="text"
             maxLength={2}
             onChange={(e) => {
               setInputNum(e.target.value);
@@ -55,7 +64,7 @@ const Detail = ({ shoes }) => {
           <p>(재고 {stock[0]}개)</p>
           <p>{shoes[id].price.toLocaleString()}원</p>
           <button
-            className='btn btn-danger'
+            className="btn btn-danger"
             onClick={() =>
               dispatch(
                 addItem({ id: shoes[id].id, name: shoes[id].title, count: 1 })
@@ -69,22 +78,22 @@ const Detail = ({ shoes }) => {
 
       <Nav
         justify
-        variant='tabs'
-        defaultActiveKey='link0'
+        variant="tabs"
+        defaultActiveKey="link0"
         style={{ marginTop: "50px", marginBottom: "30px" }}
       >
         <Nav.Item>
-          <Nav.Link eventKey='link0' onClick={() => setTab(0)}>
+          <Nav.Link eventKey="link0" onClick={() => setTab(0)}>
             상품정보
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey='link1' onClick={() => setTab(1)}>
+          <Nav.Link eventKey="link1" onClick={() => setTab(1)}>
             상품후기
           </Nav.Link>
         </Nav.Item>
         <Nav.Item>
-          <Nav.Link eventKey='link2' onClick={() => setTab(2)}>
+          <Nav.Link eventKey="link2" onClick={() => setTab(2)}>
             상품 Q&A
           </Nav.Link>
         </Nav.Item>
