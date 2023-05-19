@@ -30,9 +30,7 @@ function App() {
 
   return (
     <div className="App">
-      {watchedPopup && (
-        <WatchedPopup shoes={shoes} setWatchedPopup={setWatchedPopup} />
-      )}
+      {watchedPopup && <WatchedPopup setWatchedPopup={setWatchedPopup} />}
 
       <header>
         <Link to="/">
@@ -202,7 +200,7 @@ function Card({ navigate, shoes, i }) {
   );
 }
 
-function WatchedPopup({ shoes, setWatchedPopup }) {
+function WatchedPopup({ setWatchedPopup }) {
   let watched = localStorage.getItem("watched");
   watched = JSON.parse(watched);
   watched = Array.from(watched);
