@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import "./App.css";
 import data from "./data";
-import { Routes, Route, Link, useNavigate } from "react-router-dom";
+import { Routes, Route, Link, useNavigate, useParams } from "react-router-dom";
 import Detail from "./pages/Detail";
 import Event from "./pages/Event";
 import axios from "axios";
@@ -31,11 +31,7 @@ function App() {
   return (
     <div className="App">
       {watchedPopup && (
-        <WatchedPopup
-          navigate={navigate}
-          shoes={shoes}
-          setWatchedPopup={setWatchedPopup}
-        />
+        <WatchedPopup shoes={shoes} setWatchedPopup={setWatchedPopup} />
       )}
 
       <header>
@@ -206,10 +202,11 @@ function Card({ navigate, shoes, i }) {
   );
 }
 
-function WatchedPopup({ navigate, shoes, setWatchedPopup }) {
+function WatchedPopup({ shoes, setWatchedPopup }) {
   let watched = localStorage.getItem("watched");
   watched = JSON.parse(watched);
   watched = Array.from(watched);
+  watched = [...watched].reverse();
 
   return (
     <div className="watched-popup">
@@ -224,8 +221,10 @@ function WatchedPopup({ navigate, shoes, setWatchedPopup }) {
         {watched.map((_, i) => {
           return (
             <img
-              key={i}
-              src={`https://codingapple1.github.io/shop/shoes${i + 1}.jpg`}
+              key={watched[i]}
+              src={`https://codingapple1.github.io/shop/shoes${
+                watched[i] + 1
+              }.jpg`}
               alt="배경 이미지"
               width="80%"
               style={{
