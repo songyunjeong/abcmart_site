@@ -2,7 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import { Col, Container, Nav, Navbar, Row } from "react-bootstrap";
 import "./App.css";
 import data from "./data";
-import { Routes, Route, Link, useNavigate, useParams } from "react-router-dom";
+import { Routes, Route, Link, useNavigate } from "react-router-dom";
 import Detail from "./pages/Detail";
 import Event from "./pages/Event";
 import axios from "axios";
@@ -30,7 +30,9 @@ function App() {
 
   return (
     <div className="App">
-      {watchedPopup && <WatchedPopup setWatchedPopup={setWatchedPopup} />}
+      {watchedPopup && (
+        <WatchedPopup navigate={navigate} setWatchedPopup={setWatchedPopup} />
+      )}
 
       <header>
         <Link to="/">
@@ -200,11 +202,13 @@ function Card({ navigate, shoes, i }) {
   );
 }
 
-function WatchedPopup({ setWatchedPopup }) {
+function WatchedPopup({ navigate, setWatchedPopup }) {
   let watched = localStorage.getItem("watched");
-  watched = JSON.parse(watched);
-  watched = Array.from(watched);
-  watched = [...watched].reverse();
+  if (watched) {
+    watched = JSON.parse(watched);
+    watched = Array.from(watched);
+    watched = [...watched].reverse();
+  }
 
   return (
     <div className="watched-popup">
@@ -216,22 +220,27 @@ function WatchedPopup({ setWatchedPopup }) {
       </button>
       <div style={{ marginBottom: "10px" }}>최근 본 상품</div>
       <div>
-        {watched.map((_, i) => {
-          return (
-            <img
-              key={watched[i]}
-              src={`https://codingapple1.github.io/shop/shoes${
-                watched[i] + 1
-              }.jpg`}
-              alt="배경 이미지"
-              width="80%"
-              style={{
-                marginBottom: "10px",
-                border: "1px solid #999",
-              }}
-            />
-          );
-        })}
+        {watched &&
+          watched.map((_, i) => {
+            return (
+              <img
+                key={watched[i]}
+                src={`https://codingapple1.github.io/shop/shoes${
+                  watched[i] + 1
+                }.jpg`}
+                alt="배경 이미지"
+                onClick={() => {
+                  navigate(`/detail/${watched[i]}`);
+                }}
+                width="80%"
+                style={{
+                  marginBottom: "10px",
+                  border: "1px solid #999",
+                  cursor: "pointer",
+                }}
+              />
+            );
+          })}
       </div>
     </div>
   );

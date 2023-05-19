@@ -1,20 +1,15 @@
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { Nav } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
-import { Context } from "./../App.js";
 import { addItem } from "./../store/cartSlice";
-import axios from "axios";
 
 const Detail = ({ shoes }) => {
-  let { stock } = useContext(Context);
   let { id } = useParams();
   let shoesId = shoes.find((x) => x.id == id);
   let dispatch = useDispatch();
 
   let [eventBanner, setEventBanner] = useState(true);
-  let [inputNum, setInputNum] = useState("");
-  let [alert, setAlert] = useState(false);
   let [tab, setTab] = useState(0);
 
   useEffect(() => {
@@ -25,12 +20,6 @@ const Detail = ({ shoes }) => {
       clearTimeout(timeEventTimer);
     };
   });
-
-  useEffect(() => {
-    if (isNaN(inputNum)) {
-      setAlert(true);
-    }
-  }, [inputNum]);
 
   useEffect(() => {
     let watched = localStorage.getItem("watched");
@@ -46,7 +35,7 @@ const Detail = ({ shoes }) => {
       {eventBanner && (
         <div className="alert alert-warning">5초 이내 구매 시 할인</div>
       )}
-      <div className="row">
+      <div className="row" style={{ marginTop: "30px" }}>
         <div className="col-md-6">
           <img
             src={`https://codingapple1.github.io/shop/shoes${
@@ -58,18 +47,7 @@ const Detail = ({ shoes }) => {
         </div>
         <div className="col-md-6">
           <h4 className="pt-5">{shoesId?.title}</h4>
-          <p>{shoesId?.content}</p>
-          <input
-            type="text"
-            maxLength={2}
-            onChange={(e) => {
-              setInputNum(e.target.value);
-            }}
-            placeholder={"수량"}
-            style={{ width: "50px", textAlign: "center", marginBottom: "5px" }}
-          />
-          {alert && <p style={{ color: "#ee1c25" }}>숫자만 입력해주세요.</p>}
-          <p>(재고 {stock[0]}개)</p>
+          <p style={{ marginBottom: "60px" }}>{shoesId?.content}</p>
           <p>{shoesId?.price.toLocaleString()}원</p>
           <button
             className="btn btn-danger"
