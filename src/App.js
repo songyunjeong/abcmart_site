@@ -13,18 +13,31 @@ export let Context = createContext();
 
 function App() {
   useEffect(() => {
-    localStorage.setItem("watched", JSON.stringify([]));
+    if (localStorage.getItem("watched")) {
+      return;
+    } else {
+      localStorage.setItem("watched", JSON.stringify([]));
+    }
   }, []);
 
   let [shoes, setShoes] = useState(data);
   let [loding, setLoding] = useState(false);
   let [clickCount, setClickCount] = useState(0);
   let [stock, setStock] = useState([10, 11, 12]);
+  let [watchedPopup, setWatchedPopup] = useState(true);
 
   let navigate = useNavigate();
 
   return (
     <div className="App">
+      {watchedPopup && (
+        <WatchedPopup
+          navigate={navigate}
+          shoes={shoes}
+          setWatchedPopup={setWatchedPopup}
+        />
+      )}
+
       <header>
         <Link to="/">
           <img
@@ -190,6 +203,40 @@ function Card({ navigate, shoes, i }) {
       <p>{shoes.content}</p>
       <p>{shoes.price.toLocaleString()}</p>
     </Col>
+  );
+}
+
+function WatchedPopup({ navigate, shoes, setWatchedPopup }) {
+  let watched = localStorage.getItem("watched");
+  watched = JSON.parse(watched);
+  watched = Array.from(watched);
+
+  return (
+    <div className="watched-popup">
+      <button
+        className="watched-popup-close"
+        onClick={() => setWatchedPopup(false)}
+      >
+        X
+      </button>
+      <div style={{ marginBottom: "10px" }}>최근 본 상품</div>
+      <div>
+        {watched.map((_, i) => {
+          return (
+            <img
+              key={i}
+              src={`https://codingapple1.github.io/shop/shoes${i + 1}.jpg`}
+              alt="배경 이미지"
+              width="80%"
+              style={{
+                marginBottom: "10px",
+                border: "1px solid #999",
+              }}
+            />
+          );
+        })}
+      </div>
+    </div>
   );
 }
 

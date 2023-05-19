@@ -32,6 +32,24 @@ header {
   --bs-alert-border-radius: 0;
 }
 
+.watched-popup {
+  position: fixed;
+  top: 20%;
+  right: 20px;
+  z-index: 9999;
+  width: 100px;
+  height: 350px;
+  background-color: white;
+  border: 1px solid #999;
+  overflow-y: auto;
+}
+
+.watched-popup-close {
+  margin: 10px;
+  border: 1px solid #aaa;
+  color: #666;
+}
+
 .App {
   text-align: center;
 }

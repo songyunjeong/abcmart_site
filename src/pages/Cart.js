@@ -11,9 +11,13 @@ const Cart = () => {
 
   return (
     <Container>
-      <h2 style={{ padding: "80px 0 20px" }}>{user.name} 님의 장바구니</h2>
+      <h2 style={{ padding: "80px 0 20px" }}>[{user.name}] 님의 장바구니</h2>
       <button
-        style={{ marginBottom: "50px" }}
+        style={{
+          color: "#666",
+          marginBottom: "50px",
+          border: "1px solid #999",
+        }}
         onClick={() => {
           dispatch(modifyName());
         }}
