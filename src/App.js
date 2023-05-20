@@ -8,6 +8,7 @@ import Event from "./pages/Event";
 import axios from "axios";
 import Loading from "./components/Loading";
 import Cart from "./pages/Cart";
+import { useQuery } from "@tanstack/react-query";
 
 export let Context = createContext();
 
@@ -27,6 +28,16 @@ function App() {
   let [watchedPopup, setWatchedPopup] = useState(true);
 
   let navigate = useNavigate();
+
+  let result = useQuery(
+    ["result"],
+    () =>
+      axios.get("https://codingapple1.github.io/userdata.json").then((a) => {
+        console.log("요청됨");
+        return a.data;
+      }),
+    { staleTime: 2000 }
+  );
 
   return (
     <div className="App">
@@ -87,6 +98,11 @@ function App() {
               >
                 EVENT
               </Nav.Link>
+            </Nav>
+            <Nav>
+              {result.isLoading && "로딩중"}
+              {result.error && "에러남"}
+              {result.data && `${result.data.name}님 반가워요!`}
             </Nav>
           </Container>
         </Navbar>
