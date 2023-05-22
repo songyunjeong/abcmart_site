@@ -47,7 +47,7 @@ function App() {
       )}
 
       <header>
-        <Link to="/">
+        <Link to="/*">
           <img
             src={process.env.PUBLIC_URL + "/imgs/logo.png"}
             alt="로고 이미지"
