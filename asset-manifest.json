@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/abcmart_site/static/css/main.c12e139f.css",
+    "main.js": "/abcmart_site/static/js/main.94f2e0c0.js",
+    "static/js/892.ec754791.chunk.js": "/abcmart_site/static/js/892.ec754791.chunk.js",
+    "static/js/810.bc206dbf.chunk.js": "/abcmart_site/static/js/810.bc206dbf.chunk.js",
+    "static/js/693.b1f424cf.chunk.js": "/abcmart_site/static/js/693.b1f424cf.chunk.js",
+    "static/js/787.23170c61.chunk.js": "/abcmart_site/static/js/787.23170c61.chunk.js",
+    "index.html": "/abcmart_site/index.html",
+    "main.c12e139f.css.map": "/abcmart_site/static/css/main.c12e139f.css.map",
+    "main.94f2e0c0.js.map": "/abcmart_site/static/js/main.94f2e0c0.js.map",
+    "892.ec754791.chunk.js.map": "/abcmart_site/static/js/892.ec754791.chunk.js.map",
+    "810.bc206dbf.chunk.js.map": "/abcmart_site/static/js/810.bc206dbf.chunk.js.map",
+    "693.b1f424cf.chunk.js.map": "/abcmart_site/static/js/693.b1f424cf.chunk.js.map",
+    "787.23170c61.chunk.js.map": "/abcmart_site/static/js/787.23170c61.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.c12e139f.css",
+    "static/js/main.94f2e0c0.js"
+  ]
+}
