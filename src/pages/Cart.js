@@ -11,7 +11,7 @@ const Cart = () => {
 
   return (
     <Container>
-      <h2 style={{ padding: "80px 0 20px" }}>[{user.name}] 님의 장바구니</h2>
+      <h2 style={{ padding: "80px 0 20px" }}>{user.name}님 장바구니</h2>
       <button
         style={{
           color: "#666",
@@ -22,7 +22,7 @@ const Cart = () => {
           dispatch(modifyName());
         }}
       >
-        영어이름으로 변경
+        한글이름으로 변경
       </button>
       <Table>
         <thead style={{ backgroundColor: "#eee" }}>
@@ -41,25 +41,33 @@ const Cart = () => {
               <td>{cart[i].count}</td>
               <td>
                 <button
-                  onClick={() => {
-                    dispatch(increaseCount(cart[i].id));
-                  }}
                   style={{
                     width: "26px",
                     marginRight: "5px",
+                    border: "1px solid #aaa",
+                    color: "#666",
+                  }}
+                  onClick={() => {
+                    dispatch(increaseCount(cart[i].id));
                   }}
                 >
                   +
                 </button>
                 <button
+                  style={{
+                    width: "26px",
+                    marginRight: "15px",
+                    border: "1px solid #aaa",
+                    color: "#666",
+                  }}
                   onClick={() => {
                     dispatch(decreaseCount(cart[i].id));
                   }}
-                  style={{ width: "26px", marginRight: "15px" }}
                 >
                   -
                 </button>
                 <button
+                  style={{ border: "1px solid #aaa", color: "#666" }}
                   onClick={() => {
                     dispatch(deleteItem(cart[i].id));
                   }}

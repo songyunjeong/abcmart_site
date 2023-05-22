@@ -237,7 +237,7 @@ function WatchedPopup({ navigate, setWatchedPopup }) {
         className="watched-popup-close"
         onClick={() => setWatchedPopup(false)}
       >
-        X
+        닫기
       </button>
       <div style={{ marginBottom: "10px" }}>최근 본 상품</div>
       <div>
