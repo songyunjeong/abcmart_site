@@ -1,70 +1,14 @@
-# Getting Started with Create React App
+# ABC-MART 사이트
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+개인 공부 프로젝트로 React 사용경험 및 숙련도 향상을 위해 진행한 신발 쇼핑몰 사이트 입니다.
 
-## Available Scripts
+* Redux Toolkit을 이용한 상태관리
+* Local Storage를 사용한 최근 본 상품 기능
+* Bootstrap 사용
+* lazy import하여 로딩속도 향상, 성능개선
 
-In the project directory, you can run:
+🖥️ [사이트 보러가기](https://songyunjeong.github.io/abcmart_site)
 
-### `npm start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+<img width="1504" alt="스크린샷 2023-05-23 오전 12 40 16" src="https://github.com/songyunjeong/abcmart_site/assets/117874502/b71dd1ea-eb8c-4702-afa9-c3931cc7f7a3">
+<img width="1070" alt="스크린샷 2023-05-23 오전 12 10 12" src="https://github.com/songyunjeong/abcmart_site/assets/117874502/2402215c-a1e8-4144-aab7-f28f1cea88b9">
+<img width="1511" alt="스크린샷 2023-05-23 오전 12 23 16" src="https://github.com/songyunjeong/abcmart_site/assets/117874502/f1be30d4-8bba-4a3a-987e-2a60d2c2dc2d">
