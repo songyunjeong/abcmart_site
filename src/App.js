@@ -195,7 +195,6 @@ function App() {
             }
           />
           <Route path="/cart" element={<Cart>장바구니</Cart>} />
-          <Route path="*" element={<div>없는 페이지</div>} />
         </Routes>
       </Suspense>
     </div>
