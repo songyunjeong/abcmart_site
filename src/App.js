@@ -112,7 +112,7 @@ function App() {
       <Suspense fallback={<div>로딩중</div>}>
         <Routes>
           <Route
-            path="/"
+            path="/*"
             element={
               <>
                 <img
